@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Navigation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  <style>
+    /* Sidebar Styling */
+    .sidebar {
+      width: 150px;
+      height: 100vh;
+      background-color: #333;
+      padding-top: 20px;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    /* Main Content */
+    .content {
+      margin-left: 200px; /* Same as sidebar width */
+      padding: 20px;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 50px 0;
+    }
+
+    .lsection {
+      padding: 50px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .code-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+
+    /* ✅ Copy Button Styling */
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.2s;
+    }
+
+    .copy-btn:hover {
+      background-color: #005fa3;
+    }
+
+    .copy-btn:active {
+      background-color: #004f85;
+    }
+
+    .image-container {
+      display: flex;
+      gap: 10px; /* Space between images */
+      justify-content: center; /* Center images horizontally */
+      flex-wrap: wrap; /* Makes images wrap on smaller screens */
+    }
+
+    .image-container img {
+      width: 150px; /* Adjust image width */
+      height: auto;
+      border-radius: 8px;
+    }
+
+    
+  </style>
+</head>
+
+
+
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="#cart">Cartopy</a>
+    <a href="#inst">Installation & Setup</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  
+  <!-- Main Content -->
+  <div class="content">
+
+    <section class="hero">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">CARTOPY<br> Mapping the world with Python power!</h1>
+                <div class="is-size-5 publication-authors">
+                  <span class="author-block">
+                    Lakshmikanth Umesh Tipri,
+                  </span>
+                  <span class="author-block">
+                    Pranav Magarde,
+                  </span>
+                  <span class="author-block">
+                    Sai Srinivas Acholi
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+            <a>
+              <img src="https://pypi-camo.freetls.fastly.net/ba5e90f299bbc5539b2bbba4514d367a1ad6bec3/68747470733a2f2f736369746f6f6c732e6f72672e756b2f636172746f70792f646f63732f6c61746573742f5f7374617469632f636172746f70792e706e67" width="250">
+            </a>
+            </div>
+    </section>
+    
+    <div class="lsection" id="cart">
+      <h2>What is Cartopy?</h2>
+      <p>
+      <strong>Cartopy</strong> is a Python library designed for geospatial data processing and mapping. Built on top 
+          of <strong>Numpy</strong>, <strong>PROJ</strong>, <strong>Matplotlib</strong> and <strong>Shapely</strong>, it provides powerful tools for creating high-quality maps and handling 
+          spatial data. It's widely used in meteorology, oceanography, and environmental sciences for tasks like 
+          plotting weather patterns, climate data, and geographic visualizations.
+      </p>
+      <div class="image-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Image 1">
+        <img src="https://studyopedia.com/wp-content/uploads/2022/12/Matplotlib-featured-image-studyopedia.png" alt="Image 2">
+      </div>
+    </div>
+
+    <div class="lsection" id="inst">
+      <h2>Installation and Setup</h2>
+      
+
+
+
+      <p>About us content goes here.</p>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-python">conda install -c conda-forge cartopy</code></pre>
+      </div>
+    </div>
+    
+
+    <div class="lsection" id="services">
+      <h2>Services</h2>
+      <p>Details about our services.</p>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-python">def greet_user(name):
+  print(f"Hello, {name}!")
+    
+greet_user("World")</code></pre>
+      </div>
+    </div>
+
+    <div class="lsection" id="contact">
+      <h2>Contact</h2>
+      <p>Contact details and form.</p>
+    </div>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      // Find the <code> element inside the container
+      const code = button.nextElementSibling.querySelector('code').innerText;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = 'Copied! ✅';
+        setTimeout(() => {
+          button.innerText = 'Copy';
+        }, 2000);
+      }).catch(() => {
+        button.innerText = 'Error ❌';
+      });
+    }
+  </script>
+</body>
+</html>

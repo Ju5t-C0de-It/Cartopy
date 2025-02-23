@@ -5,9 +5,11 @@
   <title>Sidebar Navigation</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
   
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- ✅ Highlight.js Python Language -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 
   <style>
     /* Sidebar Styling */
@@ -74,7 +76,7 @@
     }
 
     pre {
-      background-color: #2d2d2d;
+      background-color: #1e1e1e;
       color: #f8f8f2;
       padding: 15px;
       border-radius: 5px;
@@ -82,15 +84,15 @@
     }
 
     code {
-      font-family: 'Courier New', monospace;
       font-size: 14px;
+      line-height: 1.5;
     }
 
     /* ✅ Copy Button Styling */
     .copy-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 22px;
+      right: 25px;
       background-color: #007acc;
       color: white;
       border: none;
@@ -212,9 +214,132 @@
 
     <div class="lsection" id="features">
       <h1>Key features</h1>
-      <h3 id="hq-vis">High-quality Map Visualizations</h3>
+
+      <h3>1. High-Quality Map Visualizations</h3>
+    <p>Cartopy builds on Matplotlib to create <strong>publication-ready</strong> maps with customizable features:</p>
+    <ul>
+        <li>Coastlines, borders, and rivers at various resolutions.</li>
+        <li>Natural Earth datasets for land, ocean, lakes, and ice features.</li>
+        <li>Custom annotations, gridlines, legends, and colorbars.</li>
+    </ul>
+    <p>For example, a map of Africa with its features is shown below</p>
+    <div class="code-container">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      <pre><code class="python">import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+        
+def main():
+  fig = plt.figure()
+  ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
+  ax.set_extent([-20, 60, -40, 45], crs=ccrs.PlateCarree())
+        
+  ax.add_feature(cfeature.LAND)
+  ax.add_feature(cfeature.OCEAN)
+  ax.add_feature(cfeature.COASTLINE)
+  ax.add_feature(cfeature.BORDERS, linestyle=':')
+  ax.add_feature(cfeature.LAKES, alpha=0.5)
+  ax.add_feature(cfeature.RIVERS)
+        
+  plt.show()
+        
+if __name__ == '__main__':
+  main()</code></pre>
+    </div>
+    <a>
+      <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/photo%20final%20graph.png?raw=true" width="360">
+    </a>
+
+    <h3>2. Map Projections</h3>
+    <p>Map projections flatten the Earth’s 3D surface onto a 2D map. Cartopy supports a wide range of these:</p>
+    <ul>
+        <li><strong>PlateCarree</strong> (Equirectangular): Simple mapping of lat/lon to x/y. Distorts near poles.</li>
+        <li><strong>Mercator</strong>: Great for navigation. Keeps angles accurate but distorts size near poles.</li>
+        <li><strong>LambertConformal</strong>: Excellent for weather maps; preserves local shapes.</li>
+        <li><strong>Orthographic</strong>: Globe-like natural view.</li>
+        <li><strong>Robinson</strong>: Balances shape and area for global maps.</li>
+    </ul>
+
+    <h3>3. Built-in Natural Earth Datasets</h3>
+    <p>Cartopy includes Natural Earth datasets for quick and accurate mapping:</p>
+    <ul>
+        <li><strong>Physical Data</strong> – Coastlines, rivers, lakes.</li>
+        <li><strong>Cultural Data</strong> – Country/state borders, populated places.</li>
+        <li><strong>Resolutions</strong> – 10m (high), 50m (medium), 110m (low).</li>
+    </ul>
+
+    <h3>4. Geospatial Plotting</h3>
+    <p>Plot various geospatial data types directly on maps:</p>
+    <ul>
+        <li><strong>Points</strong> – Cities, events.</li>
+        <li><strong>Lines</strong> – Hurricane tracks, migration paths.</li>
+        <li><strong>Polygons</strong> – State boundaries, buffer zones.</li>
+    </ul>
+    <p>For example, Delhi and the Ganges river are plotted on the map below</p>
+    <div class="code-container">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      <pre><code class="python">import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+from shapely.geometry import LineString
+        
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_extent([65, 100, 0, 40], crs=ccrs.PlateCarree())
+        
+ax.add_feature(cfeature.LAND)
+ax.add_feature(cfeature.OCEAN)
+ax.add_feature(cfeature.COASTLINE)
+ax.add_feature(cfeature.BORDERS, linestyle=':')
+        
+ganges_lons = [78.57, 81.63, 83.23, 85.12, 87.03, 89.03]
+ganges_lats = [25.45, 25.12, 25.75, 25.55, 24.90, 22.90]
+        
+ax.plot(ganges_lons, ganges_lats, color='blue',markersize=2, linewidth=1, marker='o', transform=ccrs.Geodetic(), label='Ganges River')
+ax.plot(77.23, 28.61, 'r*', markersize=3, transform=ccrs.Geodetic(),label='Delhi')
+plt.legend(loc='lower left')
+plt.show()</code></pre>
+    </div>
+    <a>
+      <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/download.png?raw=true" width="360">
+    </a>
+    
+
+    <h3>5. Geometric Operations with Shapely</h3>
+    <p>Cartopy integrates with Shapely for complex geometric operations like intersections, buffers, and unions:</p>
+    <ul>
+        <li><strong>Buffering</strong> – Create zones around points or paths (e.g., hurricane tracks).</li>
+        <li><strong>Intersections</strong> – Find overlapping areas between shapes.</li>
+        <li><strong>Distance Calculations</strong> – Measure distances between points.</li>
+    </ul>
+    
+    <h2>6. Advanced Mapping Techniques</h2>
+    <p>Cartopy supports advanced mapping techniques for enhanced geospatial visualizations:</p>
+    <ul>
+      <li><strong>Custom Map Projections</strong> – Create specialized projections tailored to specific regions for improved spatial accuracy.</li>
+      <li><strong>Web Map Service (WMS) Integration</strong> – Overlay real-time or high-resolution map tiles from external sources like OpenStreetMap or NASA’s Blue Marble.</li>
+      <li><strong>Gridlines, Ticks, and Annotations</strong> – Add precise gridlines, axis ticks, and annotations for better map readability and presentation.</li>
+      <li><strong>Vector Field Visualization</strong> – Plot wind patterns, ocean currents, or any directional data using arrows or streamlines to represent magnitude and direction.</li>
+    </ul>
+    <p>For example, a custom map projection is shown below</p>
+    <div class="code-container">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      <pre><code class="python">import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
+        
+projection = ccrs.LambertConformal(central_longitude=-96, central_latitude=39)
+fig, ax = plt.subplots(subplot_kw={'projection': projection})
+ax.add_feature(cfeature.LAND)
+ax.add_feature(cfeature.OCEAN)
+ax.gridlines(draw_labels=True)
+        
+plt.show()</code></pre>
+    </div>
+    <a>
+      <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/custom%20projection.png?raw=true" width="360">
+    </a>
 
     </div>
+
 
     <div class="lsection" id="contact">
       <h2>Contact</h2>
@@ -238,5 +363,14 @@
       });
     }
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+    hljs.initLineNumbersOnLoad();
+  });
+</script>
 </body>
 </html>

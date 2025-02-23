@@ -21,12 +21,13 @@
     }
 
     .sidebar {
-      width: 200px;
-      height: 100vh;
-      background-color: #333;
-      padding-top: 20px;
-      position: fixed;
-      transition: transform 0.3s ease;
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    padding-top: 20px;
+    position: fixed;
+    z-index: 1000; /* Keeps sidebar above content */
+    transition: transform 0.3s ease;
     }
 
     .sidebar a {
@@ -388,8 +389,17 @@ plt.show()</code></pre>
 
   <script>
     function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('active');
+    document.getElementById('sidebar').classList.toggle('active');
     }
+
+    // Close sidebar when a link is clicked (for mobile view)
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          document.getElementById('sidebar').classList.remove('active');
+        }
+      });
+    });
 
     function copyCode(button) {
       // Find the <code> element inside the container

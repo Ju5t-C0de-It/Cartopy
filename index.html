@@ -12,7 +12,7 @@
   <style>
     /* Sidebar Styling */
     .sidebar {
-      width: 150px;
+      width: 200px;
       height: 100vh;
       background-color: #333;
       padding-top: 20px;
@@ -29,6 +29,27 @@
     .sidebar a:hover {
       background-color: #575757;
     }
+
+    .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    background-color: #444;
+  }
+
+  .submenu li a {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* 🔽 Show submenu on hover */
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  
+  html {
+      scroll-behavior: smooth;
+  }
 
     /* Main Content */
     .content {
@@ -48,7 +69,8 @@
 
     .code-container {
       position: relative;
-      margin-bottom: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     pre {
@@ -112,8 +134,14 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <a href="#cart">Cartopy</a>
-    <a href="#inst">Installation & Setup</a>
-    <a href="#services">Services</a>
+    <div class="dropdown">
+    <a href="#inst">Installation</a>
+    <ul class="submenu">
+      <li><a href="#conda">Using conda</a></li>
+      <li><a href="#pip">Using pip</a></li>
+    </ul>
+    </div>
+    <a href="#features">Key features</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -150,43 +178,42 @@
     </section>
     
     <div class="lsection" id="cart">
-      <h2>What is Cartopy?</h2>
+      <h1>What is Cartopy?</h1>
       <p>
-      <strong>Cartopy</strong> is a Python library designed for geospatial data processing and mapping. Built on top 
-          of <strong>Numpy</strong>, <strong>PROJ</strong>, <strong>Matplotlib</strong> and <strong>Shapely</strong>, it provides powerful tools for creating high-quality maps and handling 
-          spatial data. It's widely used in meteorology, oceanography, and environmental sciences for tasks like 
-          plotting weather patterns, climate data, and geographic visualizations.
+      <strong>Cartopy</strong> is a Python library designed for geospatial data processing 
+      and mapping. Cartopy makes use of the powerful <strong>PROJ</strong>, <strong>NumPy</strong> and <strong>Shapely</strong> libraries and 
+      includes a programmatic interface built on top of <strong>Matplotlib</strong> for the creation of publication 
+      quality maps. It's widely used in meteorology, oceanography, and environmental sciences for 
+      tasks like plotting weather patterns, climate data, and geographic visualizations.
       </p>
-      <div class="image-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Image 1">
-        <img src="https://studyopedia.com/wp-content/uploads/2022/12/Matplotlib-featured-image-studyopedia.png" alt="Image 2">
-      </div>
     </div>
 
     <div class="lsection" id="inst">
-      <h2>Installation and Setup</h2>
-      
-
-
-
-      <p>About us content goes here.</p>
+      <h1>Installation</h1>
+      <h3 id="conda">Using Conda (Recommended)</h3>
+      If you have <a href="https://www.anaconda.com/download">Anaconda</a> or <a href="https://docs.anaconda.com/miniconda/">Miniconda</a> installed, run:
       <div class="code-container">
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         <pre><code class="language-python">conda install -c conda-forge cartopy</code></pre>
       </div>
+      This will automatically handle all the system dependencies.
+
+      <h3 id="pip">Using pip</h3>
+      Using pip to install will require you to download its dependencies (for example, pyproj
+      and pyshp etc.)
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-python">pip install cartopy</code></pre>
+      </div>
+      Run the above command and setup the other system <a href="https://scitools.org.uk/cartopy/docs/latest/installing.html#required-dependencies">dependencies</a> to ensure proper functioning of cartopy.
+      
     </div>
     
 
-    <div class="lsection" id="services">
-      <h2>Services</h2>
-      <p>Details about our services.</p>
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <pre><code class="language-python">def greet_user(name):
-  print(f"Hello, {name}!")
-    
-greet_user("World")</code></pre>
-      </div>
+    <div class="lsection" id="features">
+      <h1>Key features</h1>
+      <h3 id="hq-vis">High-quality Map Visualizations</h3>
+
     </div>
 
     <div class="lsection" id="contact">

@@ -53,9 +53,16 @@
       background-color: #444;
     }
 
-    .dropdown:hover .submenu {
+    .dropdown.open .submenu {
       display: block;
     }
+
+    @media (hover: hover) {
+      .dropdown:hover .submenu {
+        display: block;
+      }
+    }
+
 
     .content {
       margin-left: 200px;
@@ -388,11 +395,12 @@ plt.show()</code></pre>
   </div>
 
   <script>
+    // Toggle sidebar for small screens
     function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
+      document.getElementById('sidebar').classList.toggle('active');
     }
 
-    // Close sidebar when a link is clicked (for mobile view)
+    // Close sidebar on link click (for mobile)
     document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
@@ -400,6 +408,18 @@ plt.show()</code></pre>
         }
       });
     });
+
+    // Toggle submenu on mobile
+    document.querySelectorAll('.dropdown-toggle').forEach(item => {
+      item.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault(); // Prevent default anchor behavior
+          const dropdown = item.parentElement;
+          dropdown.classList.toggle('open');
+        }
+      });
+    });
+
 
     function copyCode(button) {
       // Find the <code> element inside the container

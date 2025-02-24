@@ -424,7 +424,7 @@ plt.show()</code></pre>
 
     <div class="lsection" id="code-ex">
       <h1>Code Examples</h1>
-      <h3>India with its states and rivers</h3>
+      <h3>Australia with its states and water bodies</h3>
       <div class="code-container">
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         <pre><code class="language-python">import cartopy.crs as ccrs
@@ -433,33 +433,32 @@ import cartopy.io.shapereader as shpreader
 import matplotlib.pyplot as plt
 
 # Projection Setup and setting extent
-fig = plt.figure(figsize=(12, 14),dpi=200)
+fig = plt.figure(figsize=(12, 14),dpi=150)
 ax = plt.axes(projection=ccrs.PlateCarree())
-ax.set_extent([68, 98, 6, 38], crs=ccrs.PlateCarree())
+ax.set_extent([110, 155, -45, -8], crs=ccrs.PlateCarree())
 
 # Load the admin_1_states_provinces shapefile
-shapename = 'admin_1_states_provinces'
-shpfilename = shpreader.natural_earth(resolution='10m', category='cultural', name=shapename)
+shpfilename = shpreader.natural_earth(resolution='10m', category='cultural', name='admin_1_states_provinces')
 reader = shpreader.Reader(shpfilename)
 states = reader.records()
 
-# Add land and ocean for base map
+color = plt.get_cmap('Set1')
+idx=2
+for state in states:
+    if state.attributes['admin'] == 'Australia':
+        ax.add_geometries([state.geometry], ccrs.PlateCarree(), edgecolor='black', facecolor=color(idx),linewidth=0.5)
+        idx+=1
+
+# Add physical features and grid
 ax.add_feature(cfeature.LAND, facecolor='lightgreen')
 ax.add_feature(cfeature.OCEAN)
-ax.add_feature(cfeature.RIVERS, edgecolor='blue', linewidth=0.5)
-
-# Filter and plot only Indian states with annotations
-for state in states:
-    if state.attributes['admin'] == 'India':
-        ax.add_geometries([state.geometry], ccrs.PlateCarree(),
-                          facecolor='none', edgecolor='black', linewidth=0.7)
-        ax.text(state.geometry.centroid.x, state.geometry.centroid.y, state.attributes['name'],
-                fontsize=8, ha='center', transform=ccrs.PlateCarree())
-
+ax.add_feature(cfeature.RIVERS.with_scale('10m'), edgecolor='blue', linewidth=0.5)
+ax.add_feature(cfeature.LAKES.with_scale('10m'), facecolor='blue')
+ax.gridlines(draw_labels=True, linestyle='--', alpha=0.8)
 plt.show()</code></pre>
       </div>
       <a>
-        <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/india-map.png?raw=true" width="720">
+        <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/aus-map.png?raw=true" width="720">
       </a>
 
 

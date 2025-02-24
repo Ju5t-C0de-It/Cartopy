@@ -162,9 +162,29 @@
       .menu-toggle {
         display: block;
       }
+
+      .image-container {
+        flex-direction: column;
+      }
     }
 
-    
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px; /* Space between images */
+      margin: 20px; /* Outer spacing */
+      max-width: 100%; /* Prevent overflow */
+      box-sizing: border-box;
+    }
+
+    .image-container img {
+      height: 200px; /* Fixed height */
+      width: 100%; /* Let width adjust */
+      object-fit: contain; /* Show the whole image */
+      border-radius: 8px;
+      flex: 1;
+    }
+
   </style>
 </head>
 
@@ -384,9 +404,26 @@ plt.show()</code></pre>
 
 
     <div class="lsection" id="applic">
-      <h1>Some Applications</h1>
-      <p>Contact details and form.</p>
+      <h1>Applications and Use-cases</h1>
+      <h4>This tool can be used in various fields:</h4>
+      <ul>
+        <li><strong>Weather and Environment Studies:</strong> Visualizing temperature, precipitation, wind patterns, ocean currents and pollutants dispersion.</li>
+        <li><strong>Natural Disaster Tracking:</strong> Mapping the paths of hurricanes, earthquakes, and wildfires.</li>
+        <li><strong>Urban planning and infrastructue:</strong> Mapping road networks, zoning boundaries, pipelines and powergrids.</li>
+        <li><strong>Navigation and Logistics:</strong> Plotting flight paths, no-fly zones, shipping routes and delivery netwroks.</li>
+        <li><strong>Socio-economic Analysis:</strong> VIsualizing population density, disease outbreak and voting patterns.</li>
+      </ul>
+
+      <div class="image-container">
+        <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/climate.png?raw=true" alt="Image 1">
+        <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/patterns.png?raw=true" alt="Image 3">
+        <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/land.png?raw=true" alt="Image 2">
+      </div>
+      
+
     </div>
+
+
 
     <div class="lsection" id="contact">
       <h2>Contact</h2>

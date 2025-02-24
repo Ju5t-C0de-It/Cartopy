@@ -443,7 +443,7 @@ reader = shpreader.Reader(shpfilename)
 states = reader.records()
 
 color = plt.get_cmap('Set1')
-idx=2
+idx=0
 for state in states:
     if state.attributes['admin'] == 'Australia':
         ax.add_geometries([state.geometry], ccrs.PlateCarree(), edgecolor='black', facecolor=color(idx),linewidth=0.5)

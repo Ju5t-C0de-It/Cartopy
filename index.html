@@ -630,14 +630,12 @@ plt.show()</code></pre>
         button.innerText = 'Error ❌';
       });
     }
-  </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelectorAll('pre code').forEach((el) => {
-      hljs.highlightElement(el);
-    });
-    hljs.initLineNumbersOnLoad();
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((el) => {
+        hljs.highlightElement(el);
+      });
+      hljs.initLineNumbersOnLoad();
   });
 </script>
 </body>

@@ -15,9 +15,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 
   <style>
-    /* Sidebar Styling */
     body {
       margin: 0;
+    }
+    
+    .content {
+      margin-left: 200px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 50px 0;
+    }
+
+    .lsection {
+      padding: 50px 0;
+      border-bottom: 2px solid #bcadad;
+    }
+
+    .code-container {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px; /* Space between images */
+      margin: 10px; /* Outer spacing */
+      max-width: 100%; /* Prevent overflow */
+      box-sizing: border-box;
+    }
+
+    .image-container img {
+      height: 200px; /* Fixed height */
+      width: 100%; /* Let width adjust */
+      object-fit: contain; /* Show the whole image */
+      border-radius: 8px;
+      flex: 1;
     }
 
     .sidebar {
@@ -63,12 +114,6 @@
       }
     }
 
-
-    .content {
-      margin-left: 200px;
-      padding: 20px;
-    }
-
     .menu-toggle {
       display: none;
       position: fixed;
@@ -81,45 +126,6 @@
       border-radius: 4px;
       cursor: pointer;
       z-index: 1000;
-    }
-  
-  html {
-      scroll-behavior: smooth;
-  }
-
-    /* Main Content */
-    .content {
-      margin-left: 200px; /* Same as sidebar width */
-      padding: 20px;
-    }
-
-    /* Section Styling */
-    section {
-      padding: 50px 0;
-    }
-
-    .lsection {
-      padding: 50px 0;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .code-container {
-      position: relative;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    pre {
-      background-color: #1e1e1e;
-      color: #f8f8f2;
-      padding: 15px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-
-    code {
-      font-size: 14px;
-      line-height: 1.5;
     }
 
     /* ✅ Copy Button Styling */
@@ -168,21 +174,9 @@
       }
     }
 
-    .image-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px; /* Space between images */
-      margin: 10px; /* Outer spacing */
-      max-width: 100%; /* Prevent overflow */
-      box-sizing: border-box;
-    }
-
-    .image-container img {
-      height: 200px; /* Fixed height */
-      width: 100%; /* Let width adjust */
-      object-fit: contain; /* Show the whole image */
-      border-radius: 8px;
-      flex: 1;
+      
+    html {
+        scroll-behavior: smooth;
     }
   </style>
 </head>
@@ -207,6 +201,7 @@
     <a href="#features"><i class="fas fa-star"></i>Key features</a>
     <a href="#applic"><i class="fas fa-code-branch"></i>Applications</a>
     <a href="#code-ex"><i class="fas fa-file-code"></i>Code Examples</a>
+    <a href="#ref"><i class="fas fa-book"></i>References</a>
   </div>
 
   <!-- Main Content -->
@@ -581,12 +576,42 @@ plt.show()</code></pre>
       <a>
         <img src="https://github.com/Ju5t-C0de-It/First-Website/blob/main/images/hurricane-katrina.png?raw=true" width="500">
       </a>
-
     </div>
 
+    <div class="lsection" id="cart">
+      <h1>Why use Cartopy?</h1>
+      <p>Whether you're working in oceanography, environmental science, navigation, or any field that requires geographic data visualization, Cartopy offers the flexibility and precision needed to 
+        create high-quality maps with ease.</p>
+      <p>Cartopy is the ideal python library for advanced map projections of high quality due to its accuracy and integration with other libraries. It provides
+        you a lot of in-built features which makes mapping easier and user-friendly. Cartopy is especially used for large areas/small scale data where the spherical
+        data usual breaks down. It is preferred by meteorologist and climatologist for scientific purposes.
+      </p>
+    </div>
 
-
+    <section id="ref">
+      <h1>References</h1>
+      <a href="https://scitools.org.uk/cartopy/docs/latest/">Official Documentation</a><br>
+      <a href="https://geopandas.org/en/stable/gallery/cartopy_convert.html">Plotting with Cartopy and Geopandas</a>
+      
+    </section>
   </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">  
+        <a class="icon-link" href="https://github.com/Ju5t-C0de-It/First-Website" class="external-link" disabled>
+          <i class="fab fa-github">Source Code</i>
+        </a>
+      </div>
+      <div class="columns is-centered">  
+        <p>
+          This website has been designed using the <a href="https://nerfies.github.io/">Nerfies Website</a> as a template.
+        </p>
+      </div>
+    </div>
+  </footer>
+
 
   <script>
     // Toggle sidebar for small screens
@@ -635,7 +660,7 @@ plt.show()</code></pre>
         hljs.highlightElement(el);
       });
       hljs.initLineNumbersOnLoad();
-  });
-</script>
+    });
+  </script>
 </body>
 </html>
